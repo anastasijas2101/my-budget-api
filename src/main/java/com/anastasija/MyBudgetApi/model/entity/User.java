@@ -1,5 +1,6 @@
 package com.anastasija.MyBudgetApi.model.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -25,5 +26,6 @@ public class User {
     private String last_name;
 
     @OneToMany(mappedBy = "user")
+    @JsonIgnore
     private List<Account> accounts;
 }
