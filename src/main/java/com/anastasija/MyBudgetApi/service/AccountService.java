@@ -13,7 +13,7 @@ public class AccountService {
     @Autowired
     private AccountRepository accountRepository;
 
-    public List<Account> findByUserId(Integer userId) {
-        return accountRepository.findByUserId(userId);
+    public List<Account> findAccounts() {
+        return accountRepository.findAll();
     }
 }

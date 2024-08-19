@@ -21,15 +21,7 @@ public class Account {
     private String name;
     private double balance;
     private String currency;
-    @Column(
-            insertable = false,
-            updatable = false
-    )
-    private Integer user_id;
 
-    @ManyToOne
-    @JoinColumn(name = "user_id")
-    private User user;
 
     @OneToMany(mappedBy = "account")
     @JsonIgnore

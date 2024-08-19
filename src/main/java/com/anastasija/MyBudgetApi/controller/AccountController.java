@@ -5,7 +5,6 @@ import com.anastasija.MyBudgetApi.service.AccountService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
@@ -18,9 +17,7 @@ public class AccountController {
     private AccountService accountService;
 
     @GetMapping("/accounts")
-    public List<Account> getAccountsByUser(
-            @RequestParam(required = true) Integer userId
-            ){
-            return accountService.findByUserId(userId);
+    public List<Account> getAccounts(){
+            return accountService.findAccounts();
     }
 }
