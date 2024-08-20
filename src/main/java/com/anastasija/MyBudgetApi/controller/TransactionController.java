@@ -1,5 +1,6 @@
 package com.anastasija.MyBudgetApi.controller;
 
+import com.anastasija.MyBudgetApi.model.dto.TransactionDTO;
 import com.anastasija.MyBudgetApi.model.entity.Transaction;
 import com.anastasija.MyBudgetApi.service.TransactionService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,5 +26,12 @@ public class TransactionController {
             @RequestParam Integer accountId
     ) {
         return transactionService.findTransactionByAccountId(accountId);
+    }
+
+    @PostMapping
+    public Transaction createTransaction(
+            @RequestBody TransactionDTO transactionDTO
+            ) {
+        return transactionService.createTransaction(transactionDTO);
     }
 }
