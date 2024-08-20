@@ -20,11 +20,7 @@ public class Transaction {
     private String description;
     private double amount;
     private String currency;
-    @Column(
-            insertable = false,
-            updatable = false
-    )
-    private Integer account_id;
+
 
     @ManyToOne
     @JoinColumn(name = "account_id")

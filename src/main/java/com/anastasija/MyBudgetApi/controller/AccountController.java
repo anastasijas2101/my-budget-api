@@ -1,11 +1,10 @@
 package com.anastasija.MyBudgetApi.controller;
 
+import com.anastasija.MyBudgetApi.model.dto.AccountDTO;
 import com.anastasija.MyBudgetApi.model.entity.Account;
 import com.anastasija.MyBudgetApi.service.AccountService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -19,5 +18,12 @@ public class AccountController {
     @GetMapping("/accounts")
     public List<Account> getAccounts(){
             return accountService.findAccounts();
+    }
+
+    @PostMapping("/accounts")
+    public Account createAccount(
+            @RequestBody AccountDTO accountDTO
+            ) {
+        return accountService.createAccount(accountDTO);
     }
 }
