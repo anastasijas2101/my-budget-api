@@ -15,7 +15,7 @@ import lombok.NoArgsConstructor;
 public class Transaction {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private String description;
     private double amount;
