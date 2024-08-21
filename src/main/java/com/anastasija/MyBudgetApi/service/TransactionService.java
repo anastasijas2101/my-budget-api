@@ -32,6 +32,13 @@ public class TransactionService {
         Account account = accountRepository.findById(transactionDTO.accountId())
                 .orElseThrow(() -> new RuntimeException("Account not found"));
 
+        double  newBalance = account.getBalance() - transactionDTO.amount();
+        if (newBalance < 0) {
+            throw new RuntimeException("Insufficient funds");
+        }
+        account.setBalance(newBalance);
+        accountRepository.save(account);
+
         Transaction transaction = new Transaction();
         transaction.setDescription(transactionDTO.description());
         transaction.setAmount(transactionDTO.amount());
