@@ -26,4 +26,9 @@ public class AccountService {
 
         return accountRepository.save(account);
     }
+
+    public double findTotalBalance() {
+        Double totalBalance = accountRepository.findTotalBalance();
+        return (totalBalance != null) ? totalBalance : 0.00;
+    }
 }

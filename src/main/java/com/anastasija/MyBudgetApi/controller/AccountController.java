@@ -10,20 +10,26 @@ import java.util.List;
 
 @CrossOrigin(origins = "http://localhost:4200")
 @RestController
+@RequestMapping("/accounts")
 public class AccountController {
 
     @Autowired
     private AccountService accountService;
 
-    @GetMapping("/accounts")
-    public List<Account> getAccounts(){
+    @GetMapping
+    public List<Account> findAccounts(){
             return accountService.findAccounts();
     }
 
-    @PostMapping("/accounts")
+    @PostMapping
     public Account createAccount(
             @RequestBody AccountDTO accountDTO
             ) {
         return accountService.createAccount(accountDTO);
+    }
+
+    @GetMapping(params = "balance")
+    public double findTotalBalance() {
+        return accountService.findTotalBalance();
     }
 }
