@@ -31,4 +31,8 @@ public class AccountService {
         Double totalBalance = accountRepository.findTotalBalance();
         return (totalBalance != null) ? totalBalance : 0.00;
     }
+
+    public void deleteAllAccounts() {
+        accountRepository.deleteAll();
+    }
 }

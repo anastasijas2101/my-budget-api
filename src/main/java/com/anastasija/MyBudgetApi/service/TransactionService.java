@@ -48,4 +48,8 @@ public class TransactionService {
         return transactionRepository.save(transaction);
     }
 
+    public void deleteAllTransactions() {
+        transactionRepository.deleteAll();
+    }
+
 }
