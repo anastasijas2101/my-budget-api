@@ -4,6 +4,7 @@ public record TransactionDTO(
         String description,
         double amount,
         String currency,
+        String type,
         Integer accountId
 ) {
 }
