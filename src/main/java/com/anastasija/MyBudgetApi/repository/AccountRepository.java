@@ -11,6 +11,6 @@ import java.util.List;
 public interface AccountRepository extends CrudRepository<Account, Integer> {
      List<Account> findAll();
 
-     @Query("SELECT SUM(a.balance) FROM Account a")
+     @Query("SELECT SUM(a.convertedBalance) FROM Account a")
      Double findTotalBalance();
 }

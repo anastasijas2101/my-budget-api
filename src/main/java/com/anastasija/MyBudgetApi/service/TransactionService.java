@@ -48,16 +48,21 @@ public class TransactionService {
         transactionRepository.save(transaction);
 
         double newBalance;
+        double formerCurrencyBalance;
+        double formerCurrencyAmount = currencyService.convert(currency, amount, account.getCurrency());
         if (transactionDTO.type().equals(TransactionType.EXPENSE)) {
-            newBalance = account.getBalance() - transaction.getConvertedAmount();
+            newBalance = account.getConvertedBalance() - transaction.getConvertedAmount();
+            formerCurrencyBalance = account.getBalance() - formerCurrencyAmount;
             if (newBalance < 0) {
                 throw new RuntimeException("Insufficient funds");
             }
         } else {
-            newBalance = account.getBalance() + transaction.getConvertedAmount();
+            newBalance = account.getConvertedBalance() + transaction.getConvertedAmount();
+            formerCurrencyBalance = account.getBalance() + formerCurrencyAmount;
         }
 
-        account.setBalance(newBalance);
+        account.setBalance(formerCurrencyBalance);
+        account.setConvertedBalance(newBalance);
         accountRepository.save(account);
 
         transaction.setAccount(account);

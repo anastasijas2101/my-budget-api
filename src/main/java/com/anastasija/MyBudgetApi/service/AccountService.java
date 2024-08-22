@@ -14,6 +14,9 @@ public class AccountService {
     @Autowired
     private AccountRepository accountRepository;
 
+    @Autowired
+    private CurrencyService currencyService;
+
     public List<Account> findAccounts() {
         return accountRepository.findAll();
     }
@@ -21,8 +24,12 @@ public class AccountService {
     public Account createAccount(AccountDTO accountDTO) {
         Account account = new Account();
         account.setName(accountDTO.name());
-        account.setBalance(accountDTO.balance());
-        account.setCurrency(accountDTO.currency());
+        double balance = accountDTO.balance();
+        account.setBalance(balance);
+        String currency = accountDTO.currency();
+        account.setCurrency(currency);
+        account.setConvertedBalance(currencyService.convert(currency, balance, "EUR"));
+        account.setConvertedCurrency("EUR");
 
         return accountRepository.save(account);
     }

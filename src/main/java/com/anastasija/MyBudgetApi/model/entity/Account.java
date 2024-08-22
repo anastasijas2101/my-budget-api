@@ -21,6 +21,8 @@ public class Account {
     private String name;
     private double balance;
     private String currency;
+    private double convertedBalance;
+    private String convertedCurrency;
 
 
     @OneToMany(mappedBy = "account")
