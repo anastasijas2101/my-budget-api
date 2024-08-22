@@ -19,7 +19,7 @@ public class CurrencyController {
     private CurrencyService currencyService;
 
     @GetMapping
-    public List<CurrencyDTO> getCurrency() {
-        return currencyService.getCurrency();
+    public List<CurrencyDTO> getCurrencies() {
+        return currencyService.getCurrencies();
     }
 }

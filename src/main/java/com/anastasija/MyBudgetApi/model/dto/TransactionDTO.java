@@ -1,10 +1,12 @@
 package com.anastasija.MyBudgetApi.model.dto;
 
+import com.anastasija.MyBudgetApi.model.TransactionType;
+
 public record TransactionDTO(
         String description,
         double amount,
         String currency,
-        String type,
+        TransactionType type,
         Integer accountId
 ) {
 }
